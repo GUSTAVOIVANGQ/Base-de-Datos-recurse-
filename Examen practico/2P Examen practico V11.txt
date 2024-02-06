@@ -1,0 +1,49 @@
+EXAMEN PRACTICO BASES DE DATOS 1  2do PARCIAL
+Profesor: Edgar A. Catalán Salgado
+ALUMNO:
+GRUPO:
+
+Crea las consultas que hagan lo que se pide,
+
+
+1. Muestra  apellido paterno con el titulo A.paterno, el apellido materno con el titulo A. Materno y el nombre de los clientes (.5)
+
+2. Muestra el nombre completo del cliente, su deuda y las mensualidades a 6 meses con un cargo del 10% (.5)
+
+3. Los clientes de la que su apellido paterno es catalan o salgado (.5)
+
+4. Los clientes que su deuda esta entre 5000 y 10000 (.5)
+
+5. Los que se llamen juan sin importar si tiene 2 o mas nombres (.5)
+
+6. Si el cliente compra algo hoy a mensualidades, ¿Cuándo serán los primeros 3 pagos? (.5)
+
+7. Convierte los primeros 3 caracteres del nombre de los clientes a mayusculas (Edgar->EDGar) (.5)
+
+8. Muestra a los clientes que hoy cumplen años (1)
+
+9. Muestra el nombre de los clientes que han comprado y su respectivo numero de venta (1)
+
+10.Es necesario clasificar a los clientes de acuerdo a su credito de la forma que se muestra a continuacion, sin embargo dado que los rangos pueden cambiar, y que probablemente se añadan mas categorias, no se quieren dejar estos rangos fijos en las consultas de la aplicacion (1.5)
+
+Credito			Clasificacion
+0 			-> 	S/c
+1-5000		->	Perfil Bajo
+5001 - 15000	->	Perfil Medio
+15001 o más	->	Perfil Alto
+
+11. Genera mediante una consulta la siguiente tabla (1.5)
+
+	Nombre 	| Cliente/Proveedor	| Deuda
+  	Edgar	|   Cliente		| 5000
+        Lg 	|   Proveedor		|  N/A
+	Maria	|   Cliente		| 6000
+	Pedro 	|   Cliente		| 3000
+	yamaha	|   Proveedor		|  N/A
+
+
+12 Muestra los otros productos que han comprado los que compraron un dvd (1.5)
+
+
+
+

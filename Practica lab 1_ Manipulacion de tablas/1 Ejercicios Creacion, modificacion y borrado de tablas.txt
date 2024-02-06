@@ -1,0 +1,10 @@
+
+    
+EJERCICIOS
+Generar los scripts que hagan lo siguiente:
+
+1. Se desea una base de datos para una escuela. Por el momento solo interesa almacenar el nombre, fecha de nacimiento, fecha de ingreso y salario del profesor.  De los salones interesa código del salón y la descripción  de su ubicación. Y de los alumnos su nombre completo, fecha nacimiento y promedio escolar.
+
+2. Se desea una base de datos de un  taller mecánico. Por el momento solo interesa del mecánico su nombre y fecha de ingreso. De las refacciones el nombre de la pieza, la fecha de llegada y la garantía. Y finalmente de los carros la marca, modelo y una descripción de los "síntomas" que tiene. 
+
+

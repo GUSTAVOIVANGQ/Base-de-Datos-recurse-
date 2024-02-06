@@ -1,0 +1,59 @@
+
+Ejercicios:
+
+1. Suponga una tabla de Alumnos con los atributos de IdAlumno, Nombre, ApPaterno, ApMaterno, Promedio y FechaIngreso. 
+   A). Da de alta los siguientes alumnos:
+       La alumna Blanca Jenipher Garcia Montez ingreso a la escuela el 2 de febrero del 2010 y tiene un promedio de 10.
+       El alumno Garcia Ruiz Brandon tiene un promedio de 9 e ingreso el 5 de agosto del 2011.
+       La alumna Brenda Alcantara ingreso el 5 de enero de este año.
+       
+   B). Modifica la calificación de 2 alumnos, 
+   C). Modifica la fecha de ingreso de 2 alumnos
+   D). Elimina a uno de los alumnos.
+
+2. Suponga una tabla llamada auto la cual tiene los datos de modelo, marca, color y placas. 
+  A. Da de alta 4 autos diferentes.
+  B. Modifica el color de uno de los carros registrados
+  C. Elimina a 2 carros.
+
+3. Suponga una tabla llamada Materia, con los datos de IdMateria, Nombre, Nivel y Créditos
+
+  A. Registra a las materias de: matemáticas, física y química, las primeras dos del primer nivel con 8 créditos cada una y la ultima del segundo nivel con 10 créditos  da de alta 3 materias diferentes y elimina 2 materias.
+  B. A las materias de primer nivel actualiza el numero de créditos a 8.5
+  C. Elimina las materias del primer nivel.
+  D. Agrega la materia de Calculo del tercer nivel con 10 créditos
+
+4. Para una base de datos de una tienda, se solicita lo siguiente:
+  A. Registrar a 10 Clientes
+  B. Registrar a los siguientes proveedores:
+     1, lg
+     2, yamaha
+     3, samsung
+     4, sony
+     5, dell
+     6, HP 
+   C. Registrar los siguientes productos con los datos indicados
+Idproducto, idProveedor, nombre, existencia, PrecioSugerido, PrecioMinimo, PrecioCompra
+1, 1, Tele, 30, 5000,4000, 3000
+2, 1, DVd, 20, 1500, 1000, 900
+3, 1, Celular, 3, 2000,2000, 1200
+4, 2, Pantalla, 5, 15000,14000, 10000
+5, 2, BlueRay, 10, 5500,5300, 5000
+6, 3, Mp3 Player, 13, 900, 900, 500
+7, NULL, Compu, 15, 19000, 17000, 115000
+
+  D. Registrar las siguientes ventas:
+ 
+  Venta 1, realizada al cliente con el id  2 con la fecha 2020/09/15, en la que se vendió:
+     2 celulares a 2000 pesos cada uno
+     1 Mp3 player a 900 pesos cada uno
+     3 blue ray  a 5500 cada uno 
+
+   Venta 2, realizada al cliente con el id 5, en la fecha 2020/09/17, en la que se vendió
+     2 blue ray en 5500 cada uno
+     1 Tele en 5000 
+
+   Venta 3, realizada al cliente con el id 2 en la fecha 2020/09/17, en la que se vendió:
+     2 pantallas  en 15000 cada una
+
+  

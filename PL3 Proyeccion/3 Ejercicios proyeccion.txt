@@ -1,0 +1,108 @@
+
+Alumno:__________________________
+Grupo:___________________________
+Profesor: Edgar A. Catalan Salgado
+
+
+               
+-- 1. Muestra el texto fijo Hola humano y el numero 5000
+	
+-- 2. Muestra el nombre de los clientes
+
+-- 3. Muestra el texto fijo Hola y el nombre de los clientes
+
+-- 4. Muestra el nombre de los clientes y el numero 300 
+
+-- 5. Muestra el texto hola, el nombre del cliente y el numero 0
+
+-- 6. Muestra apellido paterno, materno y nombre de los clientes
+
+-- 7. Muestra nombre, apellido paterno y materno de los clientes
+
+-- 8. Muestra Id, nombre, apellido paterno y rfc de los clientes
+
+-- 9. Muestra apellido paterno y los datos de dirección de los clientes
+
+-- 10. Muestra apellido paterno, materno, nombre, su crédito y deuda de los clientes
+
+-- 11. Muestra el nombre de los proveedores
+
+-- 12. Muestra todos los datos de los clientes
+
+-- 13. Muestra el nombre los productos
+
+-- 14. Muestra el nombre y precio sugerido de venta de los productos
+
+-- 15. Muestra el nombre, precio de compra y precio sugerido de venta de los productos
+
+
+
+
+USO DE ALIAS PARA PONER TITULOS EN LAS COLUMNAS
+
+
+-- 1. Cambia el titulo de la columna codpost a CODIGO POSTAL de los clientes
+
+-- 2. Muestra el RFC como REGISTRO FEDERAL DE CONTRIBUYENTES en la tabla de clientes
+
+-- 3. Muestra  apellido paterno como A.paterno, el apellido materno como A. Materno y el nombre de los clientes
+
+-- 4. muestra país como pais de origen, nombre y el rfc como registro de contribuyentes de los clientes
+
+-- 5. Muestra el nombre, la deuda y el numero 1000 con el titulo pago a deuda
+
+-- 6. Muestra el nombre, el precio sugerido de venta como P. VENTA y la existencia de los productos
+
+-- 7. Muestra el nombre, el precio sugerido de venta con el titulo P. Venta y el numero 30 con el titulo DESCUENTO
+
+-- 8. Muestra el nombre del producto 
+
+-- 9. Muestra el Nombre con el titulo producto, la existencia, el numero 10 con el titulo cantidad solicitada y el precio sugerido de venta con el titulo P.Sugerido de los productos.
+
+-- 10. Muestra el nombre con el titulo PROVEEDOR de los proveedores
+
+
+--COLUMNAS GENERADAS
+
+Nota. Lo que esta entre corchetes son datos obtenidos de la BD u operaciones con estos y debe generarse la frase en cuestión para todos los registros de la tabla correspondiente
+
+
+-- 1. Muestra el nombre completo de los clientes
+
+-- 2. Muestra el nombre con el apellido paterno
+
+-- 3. Muestra el nombre completo empezando por el apellido paterno
+
+-- 4. Muestra "El cliente [Edgar] se apellida [Catalan].
+
+-- 5. Muestra "[Edgar] vive en [Iztacalco]".
+
+-- 6. Muestra el resultado de credito-deuda como "Credito disponible".
+
+-- 7. Cuanto seria el 15% de la deuda de cada cliente.
+
+-- 8. Muestra al cliente, su deuda, el 10% de su deuda y su deuda con ese incremento.
+
+-- 9. ¿Cuanto tendría que el cliente mensualmente si se le ofrece pagar su deuda a 6 meses?
+
+-- 10. Cuanto tendria que pagar el cliente por mes a 6,12 y 24 meses para cubrir su deuda.
+
+-- 11.Muestra el nombre completo del cliente, su deuda y las mensualidades a 6 meses con un cargo del 10%
+
+-- 12. Si se le aplica un descuento del 30% ¿Cuanto tendria que pagar el cliente?
+
+-- 13. De cuanto serian las mensualidades de la deuda restante a 6,12 y 24 meses, si primero se da un anticipo del 30%
+
+-- 14. Muestra "El credito de [Edgar] es [5000]"
+
+-- 15. Muestra "[Edgar] tiene un credito de[5000] y debe[3000], por tanto puede pedir otro credito de hasta[credito-deuda]
+
+-- 16. Muestra "[Edgar] en un credito a 6 meses tiene que pagar un total de [12000]por tanto pagara mensulamente[2000]"
+
+-- 17. Muestra "Estimado cliente [Edgar Catalan], le recordamos que tiene una deuda de [10000] pesos, le ofrecemos la posibilidad de pagar el 40% ([4000] pesos) y el resto a 6 meses con el 10% de interes, quedando en [1100] pesos mensuales  "
+
+-- 18. Muestra: "El producto [Tele] se vende en [15000]" 
+
+-- 19. Muestra: "El producto [Tele] nos cuesta [5000] y se vende en [15000], por lo que su ganancia es de [PrecioVenta-PrecioCompra] "
+
+-- 20. Si resurtimos 10 [Televisiones] con el ultimo precio de compra: [5000] nos costaría  :[50000]

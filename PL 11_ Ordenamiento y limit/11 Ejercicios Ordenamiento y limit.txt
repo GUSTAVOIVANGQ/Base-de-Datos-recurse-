@@ -1,0 +1,32 @@
+
+
+ORDENAMIENTO
+
+-- 1. Muestra al primer cliente que se registro
+
+--2. Muesta al cliente con el credito mas alto
+
+--3. Muestra a los clientes ordenados alfabeticamente por nombre 
+
+--4. Muestra los primeros 3 clientes de iztacalco
+
+--5. Muestra los clientes ordenados de acuerdo a su deuda
+
+--6. Muestra los clientes ordenados de acuerdo a su credito en orden descendente
+
+--7. Muestra a los 5 primeros clientes con la deuda mas pequeña
+
+--8. Muestra los clientes ordenadas por delegacion, las delegaciones deben estar en orden ascendente y los clientes de cada delegacion ordenalos en forma descendente basados en la deuda
+
+delegacion		deuda		Cliente
+coyoacan		10000		Edgar
+Coyoacan		8000		Blanca
+Coyoacan		3000		Natalia
+Iztapalapa		5000		Jaime	
+Iztapalapa		3000		Ana
+Venustiano 
+
+--9. Muestra los clientes ordenados por delegacion y credito, las delegaciones deben de estar en orden descendente y los clientes de la misma delegacion en forma ascendente de acuerdo al credito
+
+
+

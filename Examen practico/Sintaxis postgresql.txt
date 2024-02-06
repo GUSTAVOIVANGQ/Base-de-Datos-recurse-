@@ -1,0 +1,728 @@
+PRACTICA: CREACION, MODIFICACION Y ELIMINACION DE TABLAS 
+
+
+Para modificar la definicion de una tabla la instruccion es alter table, las modificaciones mas comunes son agregar o quitar columnas.
+
+  Para borrar una columna:
+     alter table NombreTabla
+       drop Column nombreColumna;
+   
+  Para agregar una columna:
+     alter table NombreTabla
+        Add NombreCampo Tipodato (longitud);
+
+
+Para crear una tabla se usa la siguiente sintaxis:
+
+create table NombreTabla
+  (
+   Campo1 TipoDato1,
+   Campo2 TipoDato2,
+   ...
+   CampoN TipoDatoN
+  );
+
+Los tipos de datos mas comunes son:
+   int.- Enteros 
+   float.- Flotantes
+   date.-  Fecha
+   time.-  Hora
+   char(longitud).- Texto de longitud fija.
+   varchar(longitud).- Texto de longitud variable.
+     
+
+Ejemplo:
+
+  Crea una base de datos que se llame BDhospital. En esta base se guardara la clave, el nombre, telefono y recamara de los pacientes. Ademas de los doctores nos interesa su nombre, telefono, especialidad y salario.
+
+
+ create table Paciente
+   (
+    clave int,
+    nombre varchar (50),
+    telefono varchar(30),
+    recamara int
+   );
+
+ create table Doctor
+   (
+    nombre varchar (50),
+    Telefono varchar (30),
+    especialidad varchar (20),
+    salario float
+   );
+
+
+INSERCION, MODIFICACION Y ELIMINACION DE DATOS
+
+Para la insercion de datos se utiliza la siguiente sintaxis:
+
+insert into NombreTabla (campo1, Campo2,..., CampoN)
+                 values (valor1, Valor2,..., valorN)
+
+
+Donde 
+  CampoX, es el nombre de cualquier campo de la tabla
+  ValorX, es el valor que va a tener el campo
+
+
+Para actualizar datos la instruccion es:
+
+   update NombreTabla
+       Set campo=valor[,campo2=valor2]
+      [where condicion];
+
+
+Para eliminar datos de una tabla la instruccion es:
+
+    delete from NombreTabla
+    [where Condicion];
+
+En la sintaxis lo encerrado entre corchetes es opcional, en este caso si se omite la condicion TODOS los registros se elimiaran o actualizaran segun sea el caso, por lo que hay que ser cuidadosos.
+
+Una condicion básica se compone de la siguiente forma:
+		Dato1 OperadorComparacion Dato2
+
+ Dato puede ser un campo, valor o cualquier expresion que nos de un valor valido (funciones, expresiones aritmeticas, consulta, etc) 	
+
+    Operadores de comparacion
+	>	Mayor que
+	>= 	Mayor o igual que
+	=	Igual que
+	<=	Menor igual que
+	<	Menor que
+	<> o !=	Diferente que
+
+
+
+Ejemplos
+
+  1. Da de alta al empleado Edgar Catalan Salgado, que nacio el 17 de marzo de 1981 a las 4:35 AM, con un salario de 10000
+      insert into Empleados(Nombre, ApPaterno, ApMaterno, FechaNacimiento, Salario) 
+                    values ('Edgar', 'Catalan', 'Salgado', '1981/03/17,0435', 10000)
+
+  2. Modifica el salario de los empleados que se llaman Edgar para que ahora ganen 15000
+       update Empleados
+        set Salario= 15000
+        where nombre='Edgar'
+ 
+ 3 Borra a los empleados que llaman Edgar
+     Delete from Empleados
+          where nombre='Edgar'
+
+
+--PROYECCION
+ 	Select Dato1[, dato2....]  
+	From OrigenDatos
+
+        Para mostrar todos los campos se usa * como comodin en la parte del select
+         Select *
+         from NombreTabla
+ Donde Dato puede ser:
+   -- Numero
+   -- Texto 
+   -- Atributo
+   -- Operacion aritmetica
+   -- Funcion que regrese un valor
+   -- Subconsulta que regrese un valor      
+
+OrigenDatos:
+  -- Tabla
+  -- Vista
+  -- Funcion que regrese tablas
+
+-- 1. Muestra apellido paterno, materno y nombre
+	Select ApPat, ApMat, nombre
+	from tblClientes;
+
+USO DE ALIAS para poner titulos a las columnas
+
+	Select Campo as 'titulo de columna'
+	from NombreTabla
+
+-- 1. Cambia el titulo de la columna codigo postal a CODIGO POSTAL
+	Select CodPost as 'CODIGO POSTAL'
+	from TblClientes;
+
+--COLUMNAS GENERADAS
+	Concatenacion:
+		||  Concatena cadenas de caracteres 
+	Operadores aritmeticos:
+		+  Suma
+		-  Resta
+		*  Multiplicacion
+		/  Division
+		() Sirven para agrupar expresiones aritmeticas e
+ 				   imponer un orden en su ejecucion
+
+--1. Muestra el nombre completo de los clientes
+Select nombre || ' ' ||  ApPaterno || ' ' || ApMaterno 
+from TblClientes
+
+CASTEO DE DATOS
+Para cambiar el tipo de dato, se utiliza la siguiente sintaxis
+Dato::NuevoTipo de dato
+
+Ejemplo
+Select nombre, deuda, deuda::Varchar(50), deuda::char(50)
+From cliente 
+
+
+
+
+
+SELECCION DE REGISTROS
+	select campo1,campo2
+	from tabla
+	where condicion
+
+	Condicion se compone de la siguiente forma:
+		Dato1 OperadorComparacion Dato2
+
+	Dato puede ser un campo, valor o cualquier expresion que nos de un valor valido (funciones, expresiones aritmeticas, consulta, etc) 	
+
+    Operadores de comparacion
+	>	Mayor que
+	>= 	Mayor o igual que
+	=	Igual que
+	<=	Menor igual que
+	<	Menor que
+	<> o !=	Diferente que
+
+
+--1.- Los clientes con el nombre de Edgar
+Select nombre ,Credito 
+from clientes 
+where nombre='Edgar'
+
+
+SELECCION CON OPERADORES LOGICOS 
+
+	NOT Condicion  Pide que no se cumpla la condicio
+        Operadores logicos binarios: 
+		Condicion1 AND Condicion2 pide que se cumplan las 2 condiciones
+		Condicion1 OR Condicion2  pide que se cumpla por lo menos una de las dos
+
+	Podemos usar parentesis para agrupar condiciones, de distintas formas, por ejemplo:
+		(C1 OpLogicoBin C2) OpLogicoBin C3
+		(C1 OpLogicoBin C2) OpLogicoBin (C3 OpLogicoBin C4)
+		not (C1 OpLogicoBin C2)
+
+-- Los clientes que no viven en Iztacalco
+Select nombre, delegación
+From cliente
+Where not delegacion='iztacalco'
+
+-- Los que se llaman Edgar o Juan
+Select nombre, delegación
+From cliente
+Where nombre='Edgar' or nombre='Juan'
+
+-- Los que tienen un credito entre 5000 y 10000
+Select nombre, crédit
+From cliente
+Where credito>5000 and credito<10000
+
+
+
+OPERADORES ESPECIALES
+
+	Campo between LimiteInferior AND LimiteSuperior  La condicion se cumple cuando el valor en campo esta entre los limites indicados
+	Campo in (Dato1, Dato2, etc)	La condicion se cumple cuando el valor en campo es cualquiera de los datos especificados
+
+-- Credito entre 5000 y 10000 con between
+Select nombre, crédit
+from clientes
+where credito between 5000 and 10000
+
+-- Los de la delegacion Iztacalco, Coyoacan o Benito Juarez, con el op in
+Select nombre, delegación
+from clientes
+where delegation in ('Iztacalco', 'Coyoacan', 'Benito Juarez')
+
+
+OPERADORES PARA BUSQUEDA DE PATRONES
+
+Operador Like
+
+	select nombre
+	From	Tabla
+	where nombre like 'texto'
+
+	En el texto puede ir cualquiera de los siguientes comodines
+		% 0 o mas caracteres, cualquiera que estos sean
+		_ Un solo caracter, cualquiera que sea
+
+Operador Similar to
+
+	select nombre
+	From	Tabla
+	where nombre similar to 'texto'
+
+Adicionalmente similar to también permite los siguientes caracteres de las expresiones regulares POSIX:
+
+	En el texto puede ir cualquiera de los siguientes comodines
+
+	"*" Especifica 0 o mas instancias de lo que le precede. Si ponemos "_*" equivale a % en like 
+	"+" Especifica 1 o mas instancias de lo que le precede.
+	"?" Especifica 0 o 1 instancias de lo que le precede. Si ponemos "_?" equivale a _ en like 
+
+Los corchetes permiten extender la funcionalidad del "_" de la siguiente forma:
+veces. 
+	"[CCC...]" Especifica un conjunto de caracteres  validos en una posicion 
+
+      Las llaves permiten especificar el numero de veces lo que le precede:
+	"{N,M}", el cual indica el numero minimo (N) y maximo (M) de veces debe aparecer lo que le precede. si se especifica solo un numero {N} es equivalente a {N,}, que lo podriamos interpretar como minimo N, maximo lo que sea.
+
+     Podemos especificar cadenas opcionales con el símbolo "|":
+	"Cadena1|Cadena1" indica que pude aparecer la cadena 1 o la 2
+    
+    Finalmente podemos agrupar elementos para tratarlos como uno solo utilizando paréntesis. 
+
+Les pongo los siguientes ejemplos:
+
+Suponga los nombre Ana, Pedro, Edgar, Yalsiria y Blanca
+
+Muestra a los que tienen por lo menos una A
+	Select Nombre
+	from tblClientes
+	where nombre like'%A%' or nombre like '%a%';
+	
+	Select Nombre
+	from tblClientes
+	where nombre similar to '%(A|a)%';
+
+	Select Nombre
+	from tblClientes
+	where nombre similar to '_*(A|a)_*';
+
+Muestra a los que terminan con a
+	Select Nombre
+	from tblClientes
+	where nombre like'%a';
+
+	Select Nombre
+	from tblClientes
+	where nombre similar to '_*a';
+
+
+Muestra los nombres que su segundo caracter es d 
+	Select Nombre
+	from tblClientes
+	where nombre like '_d%';
+
+	Select Nombre
+	from tblClientes
+	where nombre similar to '_d';
+
+
+Muestra los nombres que su penultimo caracter es a
+	Select Nombre
+	from tblClientes
+	where nombre like '%a_';
+
+	Select Nombre
+	from tblClientes
+	where nombre similar to '_*a_';
+
+
+Muestra a los que empiezan con vocal
+	Select Nombre
+	from tblClientes
+	where nombre similar to '[AEIOU]_*';
+
+
+Muestra a los que NO empiezan con vocal
+	Select Nombre
+	from tblClientes
+	where not nombre similar to '[AEIOU]_*';
+
+Muestra a los que NO empiezan con vocal
+	Select Nombre
+	from tblClientes
+	where nombre not similar to '[AEIOU]_*';
+
+
+
+SELECCION DE NULOS
+
+Un valor nulo es un valor especial que indica que dicho valor es desconocido, es diferente de un 0 y de una cadena vacia en el sentido de que cualquier operacion que involucre a un nulo va a dar como resultado nulo.
+
+numero/0=0  				numero/NULO=NULO
+concat ('texto1', '')='Texto1'		concat('Texto1', NULO)=NULO
+
+Por su naturaleza el valor nulo necesita de tratamiento especial, empezando por el condicionamito de registros, el cual se tiene que hacer de la siguiente forma:
+
+select nombre, credito
+from tblClientes
+where credito is null
+
+
+
+FUNCIONES PARA MANEJO DE TEXTO
+
+	CHAR_LENGTH(texto) Regresa la longitud del texto
+	UPPER(texto) Regresa el texto en mayusculas
+	LOWER(texto) Regresa el texto en minusculas
+	LEFT(texto, num)  regresa los primeros caracteres del texto, la  cantidad de caracteres obtenidos esta especificado por num
+	RIGHT(texto, Num) regresa los ultimos caracteres del texto, la  cantidad de caracteres obtenidos esta especificado por num
+	SUBSTRING(texto, PosIni, Num):  obtiene del texto, la cantidad de caracteres indicado por Num a partir de la posicion inicial especificada
+	LTRIM(texto[,textoAQuitar]) quita los espacios en blanco al inicio del texto
+	RTRIM(texto[,textoAQuitar]) quita los espacios en blanco al final del texto
+	TRIM(Texto[,TextoAQuitar]) quita los caracteres indicados, ya sea al inicio o al final.
+	REPLACE(texto, SubcadenaAReemplazar, NuevaCadena) busca dentro de un texto una subcadena y la reemplaza por una nueva 
+
+FUNCIONES DE FECHA
+
+now(); regresa la fecha y hora actuales
+
+extract(PARTEFECHA from FECHA). -  Extrae la PARTEFECHA  de FECHA 
+
+date_part(PARTEFECHA, FECHA) 
+
+to_char(fecha,parteFormatofecha) Convierte la fecha a texto, mostrando la parte de la fecha indicada con el formato indicado
+
+date_part(PARTEFECHA, FECHA) - date_part(PARTEFECHA, FECHA)  Para obtener la diferencia entre dos fechas
+
+FECHA + cast('NUMERO PARTEFECHA' as interval) Para sumar y restar valores a una fecha, se utilizan los operadores aritméticos +, -, y se especifica lo que se suma o resta (días, meses, etc)
+
+   Select now() + cast('2 day' as interval)
+
+ParteFEcha: 
+milliseconds
+second
+minute
+hour
+day
+dow     -- Day of week
+week
+month
+quarter
+year
+decade
+century
+millennium
+
+
+parteFormatofecha
+
+Y,YYY	year in 4 digits with comma
+YYYY	year in 4 digits
+YYY	last 3 digits of year
+YY	last 2 digits of year
+Y	The last digit of year
+IYYY	ISO 8601 week-numbering year (4 or more digits)
+IYY	Last 3 digits of ISO 8601 week-numbering year
+IY	Last 2 digits of ISO 8601 week-numbering year
+I	Last digit of ISO 8601 week-numbering year
+BC, bc, AD or ad	Era indicator without periods
+B.C., b.c., A.D. ora.d.	Era indicator with periods
+MONTH	English month name in uppercase
+Month	Full capitalized English month name
+month	Full lowercase English month name
+MON	Abbreviated uppercase month name e.g., JAN, FEB, etc.
+Mon	Abbreviated capitalized month name e.g, Jan, Feb,  etc.
+mon	Abbreviated lowercase month name e.g., jan, feb, etc.
+MM	month number from 01 to 12
+DAY	Full uppercase day name
+Day	Full capitalized day name
+day	Full lowercase day name
+DY	Abbreviated uppercase day name
+Dy	Abbreviated capitalized day name
+dy	Abbreviated lowercase day name
+DDD	Day of year (001-366)
+IDDD	Day of ISO 8601 week-numbering year (001-371; day 1 of the year is Monday of the first ISO week)
+DD	Day of month (01-31)
+D	Day of the week, Sunday (1) to Saturday (7)
+ID	ISO 8601 day of the week, Monday (1) to Sunday (7)
+W	Week of month (1-5) (the first week starts on the first day of the month)
+WW	Week number of year (1-53) (the first week starts on the first day of the year)
+IW	Week number of ISO 8601 week-numbering year (01-53; the first Thursday of the year is in week 1)
+CC	Century e.g, 21, 22, etc.
+J	Julian Day (integer days since November 24, 4714 BC at midnight UTC)
+RM	Month in upper case Roman numerals (I-XII; >
+rm	Month in lowercase Roman numerals (i-xii; >
+HH	Hour of day (0-12)
+HH12	Hour of day (0-12)
+HH24	Hour of day (0-23)
+MI	Minute (0-59)
+SS	Second (0-59)
+MS	Millisecond (000-999)
+US	Microsecond (000000-999999)
+SSSS	Seconds past midnight (0-86399)
+AM, am, PM or pm	Meridiem indicator (without periods)
+A.M., a.m., P.M. or p.m.	Meridiem indicator (with periods)
+
+
+
+FUNCIONES DE AGRUPAMIENTO
+
+Las funciones de agrupamiento sirven para que en base  a un grupo de valores, obtener un resultado.
+
+Las funciones mas comunes son:
+
+SUM (Campo)  Calcula la suma del grupo
+AVG (Campo) Calcula el promedio del grupo
+Max (Campo) Regresa el valor mas grande del grupo
+MIN (Campo) Regresa el valor mas pequeÒo del grupo
+COUNT (Campo) Cuenta los integrantes del grupo
+
+La sintaxis para usar funciones de grupo es la siguiente:
+
+select FAgrupamiento(Campo), CampoDeAgrupamiento
+from tabla
+group by CampoDeAgrupamiento
+
+Un campo de agrupamiento es un campo con base al cual vamos a generar grupos, por ejemplo, si se calcula el total de clientes de una delegacion, el campo delegacion seria el campo de agrupamiento.
+
+En una consulta que tiene funciones de agrupamiento solo se pueden mostrar resultados de funciones de agrupamiento o Campos de agrupamiento. Esto debido a que tratamos de mostrar otro campo no seria posible decidir que informacion mostrar. Siguiendo con el ejemplo de calcular el total de clientes de una delegacion tendriamos 
+
+select COUNT(Nombre),Delegacion
+from Cliente
+group by Delegacion
+
+En este ejemplo si tratamos de mostrar tambien el campo nombre, el sql no sabra cual nombre, de todos los clientes de una determinada delegacion mostrar.
+
+CONDICIONANDO GRUPOS
+
+Para condicionar grupos agregamos la clausuala having, having funciona de la misma forma que el where solo que esta es para grupos.
+
+Muestra las delegaciones con mas de 5 clientes
+select COUNT(IdCliente),Delegacion
+from Cliente
+group by Delegacion
+having COUNT(IdCliente)>5
+
+
+
+
+EJERCICIOS JOINS
+
+
+La clausula join nos permite unir 2 tablas bajo un determinado criterio, nos sirve para juntar la informacion almacenada en los campos de una tabla con los de otra
+
+un join se especifica en la seccion del from:
+
+select Tabla1.Campo, Tabla2.Campo
+from Tabla1 aliasTabla1 join tabla2 aliastabla2 on condicion
+
+En la parte del select especificamos la tabla a la que pertenece el campo principalmete para evitar ambiguedades en el caso de que 2 tablas posean campos con el mismo nombre (por ejemplo el campo nombre de la tabla proveedores y el campo nombre de la tabla productos), ademas de esta forma se da mas claridad a la consulta.
+
+Los alias permiten cambiar, por asi decirlo, el nombre de una tabla en la consulta, Si se le pone un alias a una de las tablas, se tiene que dejar de usar el nombre de la tabla y forzosamente para esa tabla tenemos que usar el alias.
+
+De acuerdo a la condicion del join podemos tener los siguientes tipos de join
+
+EQUIJOIN, es cuando en la condicion se pide que se cumpla una igualdad, generalmente es de una llave primaria con una llave foranea.
+
+select Tabla1.Campo, Tabla2.Campo
+from Tabla1 join tabla2 on Tabla1.CampoLlavePrim=Tabla2.CampoLLaveForanea
+
+
+NON EQUIJOINS, es cuando en la condicion no se pide una igualdad, una posibilidad es cuando se compara un valor de una de las tablas con un rango establecido en una de las otras
+
+select Tabla1.Campo, Tabla2.Campo
+from Tabla1 join tabla2 on 
+Tabla1.Dato>Tabla2.LimInf and Tabla1.Dato<Tabla2.LimSup
+
+Si tabla1 y tabla2 son la misma tabla, entonces se dice que se esta haciendo un SELF JOIN, en este caso en particular se hace obligatorio el uso del alias para tablas:
+
+El join solo muestra los registros que cumplen con la relacion establecida mediante la condicion, todos los registros de ambas tablas que no puedan cumplir con dicha condicion quedan fuera, por esta razon es que se conocen como INNER JOINS o joins internos. 
+
+Debido a que es muy comun los casos en que necesitemos todos los registros de una de las dos tablas o incluso de las 2, existen los OUTER JOINS,que nos permiten agregar estos registros, estos son:
+
+LEFT OUTER JOIN
+RIGHT OUTER JOIN
+
+o simplemente:
+
+LEFT JOIN
+RIGHT JOIN
+
+
+Estos en pocas palabras, si nos posicionamos en la palabra join, tenemos una tabla a la izquierda y otra a la derecha, mediante LEFT o RIGHT indicamos de cual de las tablas queremos todos los registros.
+
+
+select Tabla1.Campo, Tabla2.Campo
+from TablaIzquierda left join tablaDerecha on condicion
+ 
+
+ANIDAMIENTO DE JOINS
+
+La instruccion completa de un join nos da como resultado una tabla que contiene todos los campos de las tablas usadas, ese resultado puede ser usado como parametro para otro join, lo cual nos permite hacer cosas como:
+
+select Tabla1.Campo, Tabla2.Campo, Tabla3.Campo
+from (Tabla1 join Tabla2 on condicion1)
+      join Tabla3 on Condicion2
+
+
+select Tabla1.Campo, Tabla2.Campo, Tabla3.Campo, Tabla4.Campo
+from (Tabla1 join Tabla2 on condicion1)
+      join 
+     (Tabla3 join Tabla4 on Condicion2)
+      on condicion3
+
+
+
+-- 1. MUESTRA A LOS PROVEEDORES CON LOS PRODUCTOS QUE SURTE
+   select proveedor.nombre, producto.nombre
+   from proveedor join producto on proveedor.idproveedor= producto.idproveedor
+
+-- 2. MUESTRA TODOS LOS PROVEEDORES Y LOS PRODUCTOS QUE SURTEN (SI ES QUE SURTE)
+   select proveedor.nombre, producto.nombre
+   from proveedor left join producto on proveedor.idproveedor= producto.idproveedor
+
+-- 3. MESTRA TODOS LOS PRODUCTOS Y EL PROVEEDOR QUE LOS SURTE (SI LO SURTE ALGUNO)
+   select proveedor.nombre, producto.nombre
+   from proveedor right join producto on proveedor.idproveedor= producto.idproveedor
+
+-- 4. MUESTRA TODOS LOS PROVEEDORES Y TODOS LOS PRODUCTOS MOSTRANDO LOS PRODUCTOS QUE SURTE CADA PROVEEDOR
+   select proveedor.nombre, producto.nombre
+   from proveedor full join producto on proveedor.idproveedor= producto.idproveedor
+
+
+
+UNION
+
+select Col1, col2
+from tabla1
+union
+select Col1,Col2
+from tabla2
+union
+...
+union
+select Col1,Col2
+from tabla
+
+El operador union tiene 2 restricciones:
+1.- todas las consultas tienen que tener el mismo numero de columnas
+2.- La columna n en todas las consultas tiene que ser del mismo tipo, es decir, si en la consulta 1 la columna 1 es varchar, dicha columna tiene que ser varchar en todas las consultas 
+3.- La clausal order by solo se puede utilizar hasta el final y aplica al conjunto resultado del operador union.
+
+
+
+SUBCONSULTAS
+
+En ciertas ocasiones para poder resolver una consulta necesitamos de un valor almacenado en la base de datos. Una subconsulta nos permite hacer esto, literalmente es una consulta metida dentro de otra, la cual se ejecuta primero para obtener un resultado y este resultado se usa en la consulta exterior para llegar al resultado final.
+
+Tomemos por ejemplo la pregunta øQue productos cuestan mas que un DVD?, para resolver esto primero necesitariamos conocer el precio del DVD, podriamos obtener dicho precio mediante la siguiente consulta
+
+SELECT precioVenta
+FROM tblInventario
+WHERE nombre='dvd'
+
+Lo cual nos daria como resultado 
++------+
+|Precio|
++------+
+ 1500
+
+Con esa informacion ya podriamos realizar la consulta que se nos pidio, de la siguiente forma:
+
+SELECT nombre, precioVenta
+FROM tblInventario
+WHERE PrecioVenta>1500
+
+Sin embargo el precio del dvd puede cambiar, ademas si quisieramos saber que productos cuestan mas que una tele o un estereo, tendriamos que cambiar las 2 consultas, entonces si sabemos que ese valor es el resultado de una consulta, podemos usar esa consulta dentro de la otra para obtener el resultado deseado de la siguiente forma:
+
+SELECT nombre, precioVenta -- La consulta externa es en la que se muestra la informacion deseada o solicitada
+FROM tblInventario
+WHERE PrecioVenta>(SELECT precioVenta -- la consulta interna obtiene un dato necesario para poder resolver 
+		   FROM tblInventario  -- la externa, en este caso solo el precio del DVD
+		   WHERE nombre='dvd')
+
+Notese que la subconsulta esta encerrada entre parentesis, esto tiene 2 funciones la principal es que al igual que con operadores aritmeticos y logicos, le indica al compilador de MYSQL que lo que esta dentro de los parentesis es un codigo que se debe ejecutar primero. La 2da simplemente es para dar claridad a las consultas.
+
+Algo importante a hacer notar es que si tenemos 2 productos que se llamen DVD, la cunsulta deja de funcionar, debido a que como resultado de la subconsulta o consulta interna tendriamos 2 valores y al sustituir el compilador tendriamos algo como:
+
+SELECT nombre, precioVenta -- La consulta externa es en la que se muestra la informacion deseada o solicitada
+FROM tblInventario
+WHERE PrecioVenta>(1500,2000) -- la consulta interna devuelve 2 valores, y el operador Mayor que solo permite uno  				-- a cada lado, lo cual nos genera un error.
+
+
+Por lo tanto necesitamos una forma de garantizar en este caso,que el resultado de la consulta interna unicamente regrese un registro, para lograr ese objetivo en lugar de usar el nombre usamos el identificador de producto
+
+SELECT nombre, precioVenta -- La consulta externa es en la que se muestra la informacion deseada o solicitada
+FROM tblInventario
+WHERE PrecioVenta>(SELECT precioVenta -- la consulta interna obtiene un dato necesario para poder resolver 
+		   FROM tblInventario  -- la externa, en este caso solo el precio del DVD
+		   WHERE IdProducto=3)
+
+
+
+En realidad todos los resultados de una consulta pueden ser considerados como tablas, pero de acuerdo a la cantidad de datos que regresa y el tipo de estos, podriamos clasificarlo de la siguiente forma:
+
+TIPO 1.- Un unico dato de un tipo especifico, generado por consultas en las que en la parte del select solo existe un campo y de algun modo se garantiza que solo se regresara un registro, ya sea que se condicione mediante el identificador o usando la clausula limit, o funciones de agregado sobre toda la tabla, etc.
+	select nombre
+	From tblClientes
+	where IdCliente=1
+
+TIPO 2.- Una columna de datos del mismo tipo. Generado por consultas que en la parte del select tienen un unico campo pero en el where se regresan 2 o mas registros
+	select nombre
+	From tblClientes
+
+TIPO 3.- Un renglon de datos
+	select nombre, FechalAlta, Credito
+	From tblClientes
+	where IdCliente=1
+
+TIPO 4.- Una tabla con varios datos de tipo diferente. 
+	select nombre, FechalAlta, Credito
+	From tblClientes
+
+
+Lo cual nos lleva a las siguientes restriciones:
+
+En la parte del select unicamente pueden ir subconsultas del tipo 1
+En la parte del from, pueden ir consultas de cualquier tipo pero se les tiene que poner un alias
+En operaciones aritmeticas, solo pueden usar subconsultas del tipo 1
+En condiciones mediante operadores comparativos, solo se pueden usar del tipo 1, aunque nos podemos ayudar de los operadores IN, ALL y ANY para extender sus capacidades y poder usar consultas del tipo 2 
+
+Where campo in (valor1, valor2, ...) pide que campo sea igual a cualquiera de los valores
+where campo > all(valor1, valor2, valor3,...) pide que campo sea mayor a todos los valores
+where campo > any (valor1, valor2, valor3,...) pide que campor sea mayor a cualquiera de los valores
+
+Podemos reemplazar esta lista de valores por una subconsulta
+Where campo in (subconsulta) pide que campo sea igual a cualquiera de los valores
+where campo > all(subconsulta) pide que campo sea mayor a todos los valores
+where campo > any (subconsulta) pide que campo sea mayor a cualquiera de los valores
+
+
+
+ORDENAMIENTO
+El ordenamiento de los registros se hace mediante la clausula order by esta se pone al final se la consulta
+
+select campo1, campo2..
+from tabla
+where condicion
+order by tituloColumna1 ASC/DESC, tituloColumna2 ASC/DESC...
+
+TituloColumna es la col con la cual vamos a ordenar
+
+Ejemplo
+--Ordena los clientes por nombre en orden descendente
+select nombre
+from tblClientes
+order by nombre
+
+
+LIMITE DE REGISTROS
+
+Se puede establecer un limite de registros a mostrar.Una vez establecido dicho limite, la consulta regresara la cantidad de registros indicados.
+
+select campo1, campo2
+from tblClientes
+where condicion
+limit  Cantidad [offset posinicial]
+
+Donde Cantidad es el numero de registros que se desean y la posicion inicial a partir de que registro se va a obtener
+
+
+Ejemplo
+-- muestra al primer cliente registrado
+select nombre
+from tblClientes
+limit 1
+
+
+

@@ -1,0 +1,39 @@
+Alumno:_______________________________
+Grupo:________________________________
+Profesor: Edgar A. Catalán Salgado
+
+EJERCICIOS SUBCONSULTAS
+
+
+--1. Muestra los productos que cuestan menos que una tele
+
+--2. ¿Que productos tienen el precio mas alto?
+
+--3. ¿Que clientes tienen un credito superior al promedio?
+
+--4. ¿Quienes deben mas que edgar?
+
+--5. ¿Que clientes tienen el credito mas alto otorgado?
+
+--6 ¿Quienes no han comprado un dvd?
+
+--7 ¿Que clientes no han comprado?
+
+--8 ¿De que delegacion no han comprado?
+
+--9  ¿Que otros productos han comprado los que se han llevado un dvd?
+
+--10 ¿Que productos se han llevado en las ventas menores a 15000 (totalventa)?
+
+--11 ¿Que prductos se llevan las personas con un credito menor a 10000?
+
+--12  ¿Que otros productos se han llevado las personas que se llevaron un dvd y tienen un credito mayor al promedio
+
+--13  ¿Muestra a los clientes de la delegacion que tiene menos clientes?
+
+--14 ¿En que delegacion compran mas (mayor cantidad de ventas)?
+
+--15 ¿De que proveedor compran mas (mayor cantidad de productos vendidos)?
+
+
+
